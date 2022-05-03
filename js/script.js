@@ -1,18 +1,26 @@
-//Made by: Aiden McLeod
-//Made in: March 2022
+// Aiden McLeod
+// ICS2O-Unit-5-02-HTML
+// May 1 2022
 
 'use strict'
 /**
- * This function calculates area of a sphere.
+ * Check service worker.
  */
-function calculate() {
-  // input
-  const radius = parseInt(document.getElementById('radius').value)
+if (navigator.serviceWorker) {
+  navigator.serviceWorker.register("/ICS2O-Unit5-02-HTML/sw.js", {
+    scope: "/ICS2O-Unit5-02-HTML/",
+  })
+}
 
-  // process
+/**
+ * Checks if the integer the user chose is negative or positive.
+ */
+function onButtonClick() {
+  const integer = document.getElementById("integer").value
 
-  const volume = (4/3)* Math.PI * Math.pow(radius, 3);
-
-  // output
-  document.getElementById('volume').innerHTML = 'Volume is: ' + volume.toFixed(2) + ' cm³'
+  if (integer >= 0) {
+    document.getElementById("result").innerHTML = "<h5>" + integer + " is a positive integer.</h5>"
+  } else {
+    document.getElementById("result").innerHTML = "<h5>" + integer + " is a negative integer.</h5>"
+  }
 }
